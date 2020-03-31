@@ -1,3 +1,8 @@
+#Xcode
+Build
+*.xcodeproj/*
+
+
 # Prerequisites
 *.d
 
