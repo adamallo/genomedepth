@@ -301,10 +301,14 @@ int main(int argc, const char * argv[]) {
     double mediangapsize=imedian(agaps->mem,ngaps);
     fprintf(ofile,"GenomeSize,Breadth1x,MeanDepth,MeanDepthCovered,MeanGapSize,MedianDepth,MedianDepthCovered,MedianGapSize\n%ld,%f,%f,%f,%f,%f,%f,%f\n",npos,emptybases*100.0/npos,meandepth,meandepthcovered,meangapsize,mediandepth,mediandepthcovered,mediangapsize);
     //Calculating histograms
-    //struct hist_data depth_hist=histogram(adepths->mem,npos,nbins);
-    struct hist_data gap_hist=histogram_nbins(agaps->mem,ngaps,nbins);
-    //Printing histograms
-    write_histogram(gap_hist,hfile);
+    
+    if(hfile!=NULL)
+    {
+        //struct hist_data depth_hist=histogram(adepths->mem,npos,nbins);
+        struct hist_data gap_hist=histogram_nbins(agaps->mem,ngaps,nbins);
+        //Printing histograms
+        write_histogram(gap_hist,hfile);
+    }
     //Freeing memory, closing files and goodbye
     free(chr);
     if (ifilename!=NULL) free(ifilename);
