@@ -64,7 +64,8 @@ struct hist_data histogram_nbins (int *data, long ndata, long nbins)
     long idata=0;
     
     //[min,max) intervals
-    for (long ibin=0; ibin<nbins-1; ++ibin)
+    long ibin=0;
+    for (ibin=0; ibin<nbins-1; ++ibin)
     {
         thismax+=bin_size;
         while (*(data+idata)<thismax && idata<ndata)
@@ -87,7 +88,8 @@ struct hist_data histogram_nbins (int *data, long ndata, long nbins)
 
 void write_histogram (struct hist_data histogram, FILE * file)
 {
-    for (long i=0; i<histogram.nbins-1;++i)
+    long i=0;
+    for (i=0; i<histogram.nbins-1;++i)
     {
         fprintf(file,"[%f,%f),%ld\n",histogram.min+histogram.binsize*i,histogram.min+histogram.binsize*(i+1),*(histogram.counts+i));
     }
@@ -117,7 +119,8 @@ int compare (const void *a, const void *b)
 double imean (int *values,long nvalues)
 {
     long long total=0;
-    for (long i=0; i<nvalues; ++i)
+    long i=0;
+    for (i=0; i<nvalues; ++i)
     {
         total+=values[i];
     }
@@ -155,7 +158,8 @@ int main(int argc, const char * argv[]) {
     char *ifilename=NULL;
     char *ofilename=NULL;
     char *hfilename=NULL;
-    for (int arg=1; arg<argc;++arg)
+    int arg=0;
+    for (arg=1; arg<argc;++arg)
     {
         //First character of the argument
         buff_char=*argv[arg]; //Reads a character
