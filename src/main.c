@@ -299,7 +299,7 @@ int main(int argc, const char * argv[]) {
     double mediandepth=imedian(adepths->mem, npos);
     double mediandepthcovered=imedian(adepths->mem+emptybases,npos-emptybases);
     double mediangapsize=imedian(agaps->mem,ngaps);
-    fprintf(ofile,"GenomeSize,Breadth1x,MeanDepth,MeanDepthCovered,MeanGapSize,MedianDepth,MedianDepthCovered,MedianGapSize\n%ld,%f,%f,%f,%f,%f,%f,%f\n",npos,emptybases*100.0/npos,meandepth,meandepthcovered,meangapsize,mediandepth,mediandepthcovered,mediangapsize);
+    fprintf(ofile,"GenomeSize,Breadth1x,MeanDepth,MeanDepthCovered,MeanGapSize,MedianDepth,MedianDepthCovered,MedianGapSize\n%ld,%f,%f,%f,%f,%f,%f,%f\n",npos,100-(emptybases*100.0/npos),meandepth,meandepthcovered,meangapsize,mediandepth,mediandepthcovered,mediangapsize);
     //Calculating histograms
     
     if(hfile!=NULL)
