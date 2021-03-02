@@ -11,6 +11,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <limits.h>
+#include <math.h>
 
 // Expands to an integer constant expression evaluating to a close upper bound
 // on the number the number of decimal digits in a value expressible in the
@@ -152,6 +153,10 @@ long long itot (int *values,long nvalues)
 //My median with pre-sorted values
 double imedian (int *values, long nvalues)
 {
+    if (nvalues==0)
+    {
+        return nan("");
+    }
     if (nvalues%2==0)
     {
         return (values[nvalues/2] + values [nvalues/2+1])/2.0;
