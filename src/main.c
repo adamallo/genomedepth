@@ -60,10 +60,21 @@ struct hist_data {
 
 struct hist_data histogram_nbins (int *data, long ndata, long nbins)
 {
+    struct hist_data thehist;
+    
+    if (ndata==0)
+    {
+        thehist.counts=calloc(sizeof(*thehist.counts),nbins);
+        thehist.nbins=nbins;
+        thehist.max=0;
+        thehist.min=0;
+        thehist.binsize=0;
+        return thehist;
+    }
+    
     int min=*data;
     int max=*(data+ndata-1);
     double bin_size=(max-min)/(double)nbins;
-    struct hist_data thehist;
     thehist.counts=calloc(sizeof(*thehist.counts),nbins);
     thehist.nbins=nbins;
     thehist.max=max;
